@@ -43,13 +43,15 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+  $scope.alarms = [
+    { title: 'Work', id: 1, message: 'wake up' },
+    { title: 'Gym Day', id: 2, message: 'wake the f**k up' }
+  ];
 })
 
-.controller('AlarmsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Work', id: 1 },
-    { title: 'Gym Day', id: 2 }
-  ];
+.controller('AlarmsCtrl', function($scope, $state) {
+
 
   $scope.addAlarm = function() {
       var alarmTime = new Date();
@@ -65,9 +67,16 @@ angular.module('starter.controllers', [])
           console.log("The notification has been set");
       });
   };
+
+  $scope.createNewAlarm = function() {
+    var id = $scope.alarms.length;
+    var alarmTemplate = { title: 'New Alarm', id: id, message: 'message' }
+    $scope.alarms.push(alarmTemplate);
+    $state.go('app.edit', { playlistId: id });
+  }
 })
 
-.controller('AlarmEditorCtrl', function($scope) {
+.controller('AlarmEditorCtrl', function($scope, $stateParams) {
 
 })
 
