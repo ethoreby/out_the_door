@@ -54,28 +54,12 @@
     "org.apache.cordova.device",
     "org.apache.cordova.console",
     "com.ionic.keyboard",
-    "org.apache.cordova.device",
-    "org.apache.cordova.console",
-    "com.ionic.keyboard",
-    "org.apache.cordova.console",
-    "org.apache.cordova.device",
-    "com.ionic.keyboard",
-    "org.apache.cordova.device",
-    "org.apache.cordova.console",
-    "org.apache.cordova.console",
-    "org.apache.cordova.console",
-    "org.apache.cordova.device",
-    "com.ionic.keyboard",
-    "com.ionic.keyboard",
-    "com.ionic.keyboard",
     "org.apache.cordova.device"
   ],
   "cordovaPlatforms": [
-    "android"
+    "android",
     "org.apache.cordova.console",
     "com.ionic.keyboard",
-    "com.ionic.keyboard",
-    "org.apache.cordova.device",
     "org.apache.cordova.device"
   ]
 }
