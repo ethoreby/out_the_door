@@ -45,15 +45,26 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('AlarmsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Work', id: 1 },
-    { title: 'Gym Day', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { title: 'Gym Day', id: 2 }
   ];
+
+  $scope.addAlarm = function() {
+      var alarmTime = new Date();
+      alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+      $cordovaLocalNotification.add({
+          id: "1234",
+          date: alarmTime,
+          message: "This is a message",
+          title: "This is a title",
+          autoCancel: true,
+          sound: null
+      }).then(function () {
+          console.log("The notification has been set");
+      });
+  };
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

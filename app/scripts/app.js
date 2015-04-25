@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       views: {
         'menuContent': {
           templateUrl: "templates/alarms.html",
-          controller: 'PlaylistsCtrl'
+          controller: 'AlarmsCtrl'
         }
       }
     })
