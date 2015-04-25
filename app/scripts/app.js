@@ -48,8 +48,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.alarms', {
+      url: "/alarms",
       views: {
         'menuContent': {
           templateUrl: "templates/alarms.html",
@@ -68,5 +68,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/alarms');
 });
