@@ -67,5 +67,9 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('AlarmEditorCtrl', function($scope) {
+
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

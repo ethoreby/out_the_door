@@ -48,18 +48,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       }
     }
   })
-    .state('app.alarms', {
-      url: "/alarms",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/alarms.html",
-          controller: 'AlarmsCtrl'
-        }
-      }
-    })
 
-  .state('app.single', {
-    url: "/playlists/:playlistId",
+  .state('app.alarms', {
+    url: "/alarms",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/alarms.html",
+        controller: 'AlarmsCtrl'
+      }
+    }
+  })
+
+  .state('app.edit', {
+    url: "/alarms/edit/:playlistId",
     views: {
       'menuContent': {
         templateUrl: "templates/playlist.html",
