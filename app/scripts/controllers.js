@@ -1,10 +1,49 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $cordovaGeolocation, $ionicPlatform) {
   // Form data for the login modal
   $scope.loginData = {};
 
-  // Create the login modal that we will use later
+  $timeout(function() {
+
+  })
+//        var posOptions = {timeout: 10000, enableHighAccuracy: false};
+//            $cordovaGeolocation
+//                .getCurrentPosition(posOptions)
+//                .then(function (position) {
+//                    var lat  = position.coords.latitude
+//                    var long = position.coords.longitude
+//                    $scope.lat = lat;
+//                    $scope.long = long;
+//                    console.log('yo',lat, long)
+//                }, function(err) {
+//                    console.log(err)
+//                    // error
+//                });
+
+        var watchOptions = {
+            frequency : 100,
+            timeout : 300,
+            enableHighAccuracy: false // may cause errors if true
+        };
+
+        var watch = $cordovaGeolocation.watchPosition(watchOptions);
+        watch.then(
+            null,
+            function(err) {
+                console.log(err)
+                // error
+            },
+            function(position) {
+                var lat  = position.coords.latitude
+                var long = position.coords.longitude
+                $scope.lat = lat;
+                    $scope.long = long;
+                console.log(position)
+            });
+
+
+        // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
