@@ -1,17 +1,17 @@
 <ion-view view-title="Playlist">
   <ion-content>
-    <h1>New Alarm</h1>
+    <h1>Edit Alarm</h1>
 
     <label class="item item-input">
       <span class="input-label">Name</span>
-      <input type="text">
+      <input ng-model="currentAlarm.title" type="text">
     </label>
 
     <label class="item item-input">
       <span class="input-label">Time</span>
-      <input type="time">
+      <input ng-model="currentAlarm.wakeupTime" type="time">
     </label>
 
-    <button>Save Alarm</button>
+    <button ng-click="saveAlarm">Save Alarm</button>
   </ion-content>
 </ion-view>

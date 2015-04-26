@@ -45,28 +45,27 @@ angular.module('starter.controllers', [])
   };
 
   $scope.alarms = [
-    { title: 'Work', id: 1, message: 'wake up' },
-    { title: 'Gym Day', id: 2, message: 'wake the f**k up' }
+    { title: 'Work', id: 0, message: 'wake up', wakeupTime: null },
+    { title: 'Gym Day', id: 1, message: 'wake the f**k up', wakeupTime: null }
   ];
 })
 
 .controller('AlarmsCtrl', function($scope, $state) {
 
-
-  $scope.addAlarm = function() {
-      var alarmTime = new Date();
-      alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-      $cordovaLocalNotification.add({
-          id: "1234",
-          date: alarmTime,
-          message: "This is a message",
-          title: "This is a title",
-          autoCancel: true,
-          sound: null
-      }).then(function () {
-          console.log("The notification has been set");
-      });
-  };
+  // $scope.addAlarm = function() {
+  //     var alarmTime = new Date();
+  //     alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+  //     $cordovaLocalNotification.add({
+  //         id: "1234",
+  //         date: alarmTime,
+  //         message: "This is a message",
+  //         title: "This is a title",
+  //         autoCancel: true,
+  //         sound: null
+  //     }).then(function () {
+  //         console.log("The notification has been set");
+  //     });
+  // };
 
   $scope.createNewAlarm = function() {
     var id = $scope.alarms.length;
@@ -76,8 +75,17 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('AlarmEditorCtrl', function($scope, $stateParams) {
+.controller('AlarmEditorCtrl', function($scope, $state, $stateParams, $location, $window) {
+  var id = $stateParams.id || 0;
+  $scope.currentAlarm = $scope.alarms[id]
+  $scope.saveAlarm = function() {
+    $scope.alarms[id] = $scope.currentAlarm;
 
+    //    none of these work for some reason
+    // $state.go('app.alarms');
+    // $location.path('#/app/alarms/');
+    // $window.location.url = '#/app/alarms/';
+  };
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
