@@ -1,5 +1,10 @@
 <ion-view view-title="Browse">
   <ion-content>
-    <h1>Browse</h1>
+    <h1>old: {{oldLat}}{{oldLong}}</h1>
+      <h1>new: {{lat}}{{long}}</h1>
+      <h1>{{distanceChange}}</h1>
+      <button ng-click="setInitDistance()">set</button>
+      <button ng-click="setNewDistance()">new</button>
+      <button ng-click="getDistanceChange()">change</button>
   </ion-content>
 </ion-view>
