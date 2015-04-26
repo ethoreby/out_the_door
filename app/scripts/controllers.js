@@ -114,15 +114,48 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+  $scope.alarms = [
+    { title: 'Work', id: 0, message: 'wake up', wakeupTime: null },
+    { title: 'Gym Day', id: 1, message: 'wake the f**k up', wakeupTime: null }
   ];
+})
+
+.controller('AlarmsCtrl', function($scope, $state) {
+
+  // $scope.addAlarm = function() {
+  //     var alarmTime = new Date();
+  //     alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+  //     $cordovaLocalNotification.add({
+  //         id: "1234",
+  //         date: alarmTime,
+  //         message: "This is a message",
+  //         title: "This is a title",
+  //         autoCancel: true,
+  //         sound: null
+  //     }).then(function () {
+  //         console.log("The notification has been set");
+  //     });
+  // };
+
+  $scope.createNewAlarm = function() {
+    var id = $scope.alarms.length;
+    var alarmTemplate = { title: 'New Alarm', id: id, message: 'message' }
+    $scope.alarms.push(alarmTemplate);
+    $state.go('app.edit', { playlistId: id });
+  }
+})
+
+.controller('AlarmEditorCtrl', function($scope, $state, $stateParams, $location, $window) {
+  var id = $stateParams.id || 0;
+  $scope.currentAlarm = $scope.alarms[id]
+  $scope.saveAlarm = function() {
+    $scope.alarms[id] = $scope.currentAlarm;
+
+    //    none of these work for some reason
+    // $state.go('app.alarms');
+    // $location.path('#/app/alarms/');
+    // $window.location.url = '#/app/alarms/';
+  };
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

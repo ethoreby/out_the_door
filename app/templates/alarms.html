@@ -1,0 +1,10 @@
+<ion-view view-title="Playlists">
+  <ion-content>
+    <ion-list>
+      <button ng-click="createNewAlarm()">Create Alarm</button>
+      <ion-item ng-repeat="alarm in alarms" href="#/app/alarms/edit/{{alarm.id}}">
+        {{alarm.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
