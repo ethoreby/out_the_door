@@ -118,8 +118,7 @@ angular.module('starter.controllers', [])
       title: 'Work',
       id: 0,
       message: 'wake up',
-      wakeupTime: null,
-      active: true
+      wakeupTime: null
     },
     {
       title: 'Gym Day',
@@ -130,7 +129,7 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('AlarmsCtrl', function($scope, $state) {
+.controller('AlarmsCtrl', function($scope, $state, $cordovaLocalNotification) {
 
   // $scope.addAlarm = function() {
   //     var alarmTime = new Date();
@@ -146,6 +145,25 @@ angular.module('starter.controllers', [])
   //         console.log("The notification has been set");
   //     });
   // };
+
+  $scope.activateAlarm = function(alarm) {
+    if(alarm.active) {
+      var time = new Date();
+      time.setMinutes(time.getMinutes() + 1);
+      $cordovaLocalNotification.add({
+          id: "1234",
+          date: time,
+          message: "This is a message",
+          title: "This is a title",
+          autoCancel: true,
+          sound: null
+      }).then(function () {
+          console.log("The notification has been set");
+      });
+
+      // window.plugin.notification.local.add("asfdsadfsda")
+    }
+  }
 
   $scope.createNewAlarm = function() {
     var id = $scope.alarms.length;

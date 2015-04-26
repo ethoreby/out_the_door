@@ -5,7 +5,7 @@
       <ion-item ng-repeat="alarm in alarms" href="#/app/alarms/edit/{{alarm.id}}">
         {{alarm.title}}
         <span class="controls" style="position: absolute; right: 20px; height: 100%;">
-          <ion-toggle ng-model="alarm.active" toggle-class="toggle-calm">Active</ion-toggle>
+          <ion-toggle ng-model="alarm.active" ng-change="activateAlarm(alarm)" toggle-class="toggle-calm">Active</ion-toggle>
         </span>
       </ion-item>
     </ion-list>
