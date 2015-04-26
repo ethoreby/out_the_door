@@ -68,7 +68,7 @@ angular.module('starter.controllers', [])
             enableHighAccuracy: true // may cause errors if true
         };
 
-//        var watch = $cordovaGeolocation.watchPosition(watchOptions);
+      //  var watch = $cordovaGeolocation.watchPosition(watchOptions);
 //        watch.then(
 //            null,
 //            function(err) {
@@ -112,11 +112,21 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
-})
 
   $scope.alarms = [
-    { title: 'Work', id: 0, message: 'wake up', wakeupTime: null },
-    { title: 'Gym Day', id: 1, message: 'wake the f**k up', wakeupTime: null }
+    {
+      title: 'Work',
+      id: 0,
+      message: 'wake up',
+      wakeupTime: null,
+      active: true
+    },
+    {
+      title: 'Gym Day',
+      id: 1,
+      message: 'wake the f**k up',
+      wakeupTime: null
+    }
   ];
 })
 
